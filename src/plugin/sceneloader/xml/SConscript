@@ -1,0 +1,3 @@
+Import('env')
+Import('pluginAdditionalObjects')
+env.SharedLibrary('trsceneloader_xml', ['sceneloader_xml.cpp', pluginAdditionalObjects])

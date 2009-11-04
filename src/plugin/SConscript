@@ -1,0 +1,9 @@
+Import('env')
+Export('env')
+SConscript(['sceneloader/SConscript',
+	    'renderer/SConscript',
+	    'camera/SConscript',
+	    'imagewriter/SConscript',
+		'imagereader/SConscript',
+	    'renderobserver/SConscript'	    
+])

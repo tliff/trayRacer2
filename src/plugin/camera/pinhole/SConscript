@@ -1,0 +1,5 @@
+Import('env')
+Import('pluginAdditionalObjects')
+env.SharedLibrary(	'trcamera_pinhole',
+	      	['camera_pinhole.cpp', pluginAdditionalObjects],
+		)

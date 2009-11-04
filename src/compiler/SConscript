@@ -1,0 +1,12 @@
+Import('env')
+files = [
+      'compiler.cpp',
+      '../meshkd.cpp',
+      '../triangle.cpp',
+      '../outputable.cpp',
+      '../shader.cpp'
+    ]
+
+env.Program('kdcompile',[
+    files
+    ])

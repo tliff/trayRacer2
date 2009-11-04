@@ -1,0 +1,5 @@
+.sconsign
+build/**/*
+Debug/**/*
+config.log
+data/**/*.trkd

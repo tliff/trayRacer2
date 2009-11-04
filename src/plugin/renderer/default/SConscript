@@ -1,0 +1,5 @@
+Import('env')
+Import('pluginAdditionalObjects')
+env.SharedLibrary(	'trrenderer_default',
+	      	['renderer_default.cpp', pluginAdditionalObjects],
+		)

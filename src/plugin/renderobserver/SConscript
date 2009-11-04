@@ -1,0 +1,2 @@
+SConscript(['console/SConscript', 'pixeltoaster/SConscript'])
+

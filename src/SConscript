@@ -1,0 +1,117 @@
+import os
+env = Environment(LINKFLAGS = "-rdynamic", ENV = {'PATH' : os.environ['PATH'],
+                         'TERM' : os.environ['TERM'],
+                         'HOME' : os.environ['HOME']})
+env['CPPPATH']=["/opt/local/include"]
+env['LIBPATH']=["/opt/local/lib"]
+
+
+#env['CXXFLAGS']=["-fno-inline","-Wall", "-g", "-pg"]
+env['CC'] = 'gcc-4.2'
+env['CXX'] = 'g++-4.2'
+env['CXXFLAGS']=["-g", "-O3", "-Wall"]
+env['LIBS'] = ["boost_filesystem", "dl", "boost_regex",  "boost_serialization"]
+
+
+pluginAdditionalObjects=[]
+
+#check if we are crosscompiling
+if(ARGUMENTS.get('crosscompile')):
+    env.Tool('crossmingw', toolpath = ['../scripts'])
+    env['LIBS'] = ["boost_filesystem", "boost_system", "boost_regex", "boost_unit_test_framework", "boost_serialization"]
+    env['LINKFLAGS'] = ""
+    env['CXXFLAGS'] = "-DNDEBUG"
+    pluginAdditionalObjects = ['/home/tliff/projects/trayRacer2/build/trayRacer2.lib']
+    
+
+
+conf = Configure(env)
+if conf.CheckLib('gomp'):
+    env['CXXFLAGS'] += ["-fopenmp"]
+
+if not conf.CheckLib('boost_regex'):
+    print("boost_regex missing")
+    Exit(1)
+
+if conf.CheckLib('boost_system'):
+    env['LIBS'] += ['boost_system']
+
+env = conf.Finish()
+
+
+commonFiles = [
+    'pluginmanager.cpp',
+    'plugin.cpp',
+    'meshkd.cpp',
+    'triangle.cpp',
+    'sphere.cpp',
+    'scalingtonemapper.cpp',
+    'plane.cpp',
+    'vector3.cpp',
+    'outputable.cpp',
+    'transformedshape.cpp',
+    'cornellbox.cpp',
+    'shader.cpp',
+    'normalshader.cpp',
+    'diffuseshader.cpp',
+	'sceneitemfactory.cpp'
+    ]
+
+
+
+
+
+
+if(ARGUMENTS.get('crosscompile')):
+    #if we are on windows, we need to create a fake dll
+    
+    env.SharedLibrary(target='trayRacer2.dll', source=[
+            #'trayRacer.cpp',
+            commonFiles])
+    env.Program('trayRacer2',[
+            'trayRacer.cpp',
+            commonFiles],
+                
+                )
+else:
+    env.Program(
+        'trayRacer2',[
+            'trayRacer.cpp',
+            commonFiles
+            ],
+        )
+
+#build the testrunner
+
+#env.Program('trayRacer2test',[
+#	'test.cpp',
+#   	commonFiles
+#	])
+
+
+
+
+#build the plugins
+if env ['PLATFORM'] == "darwin":
+	env['SHLINKFLAGS'] = '-bundle -flat_namespace -undefined suppress'
+	env['SHLIBSUFFIX'] = '.so'
+if env['PLATFORM'] == "win32":
+   env['CPPFLAGS']="-EHsc -O2"
+   env['LINKFLAGS']=""
+   env["MSVS"] = {"VERSION": "8.0"}
+   env["MSVS_VERSION"] = "8.0"
+   Tool("msvc")(env)
+
+env['CPPPATH']+=["#/src"]
+
+Export('env')
+Export('pluginAdditionalObjects')
+
+#build the plugins
+#env['LINKFLAGS'] = "build/trayRacer2.lib"
+SConscript(['plugin/SConscript'])
+
+
+
+#build the compiler
+SConscript(['compiler/SConscript'])

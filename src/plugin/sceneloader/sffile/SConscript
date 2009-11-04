@@ -1,0 +1,4 @@
+Import('env')
+env.SharedLibrary(	'trsceneloader_sffile',
+	      	['sceneloader_sffile.cpp'],
+		)

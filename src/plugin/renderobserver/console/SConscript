@@ -1,0 +1,5 @@
+Import('env')
+Import('pluginAdditionalObjects')
+env.SharedLibrary(	'trrenderobserver_console',
+	      	['renderobserver_console.cpp', pluginAdditionalObjects],
+		)

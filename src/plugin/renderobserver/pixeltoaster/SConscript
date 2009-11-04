@@ -1,0 +1,13 @@
+Import('env')
+Import('pluginAdditionalObjects')
+conf = Configure(env)
+if conf.CheckLib('pixeltoaster'):
+    hasPixelToaster = 1
+else:
+	hasPixelToaster = 0
+env = conf.Finish()
+if hasPixelToaster == 1:
+	env.SharedLibrary(	'trrenderobserver_pixeltoaster',
+	      				['renderobserver_pixeltoaster.cpp', pluginAdditionalObjects],
+						LIBS=['pixeltoaster'], FRAMEWORKS=['CoreServices', 'Cocoa', 'OpenGL']
+		)

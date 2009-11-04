@@ -1,0 +1,13 @@
+Import('env')
+conf = Configure(env)
+env.ParseConfig('pkg-config --cflags --libs OpenEXR')
+if conf.CheckLib('IlmImf'):
+	
+    hasEXR = 1
+else:
+	hasEXR = 0
+env = conf.Finish()
+if hasEXR == 1:
+	env.SharedLibrary(	'trimagereader_exr',
+	      	['imagereader_exr.cpp']
+		)
