@@ -10,7 +10,7 @@ env['LIBPATH']=["/opt/local/lib"]
 env['CC'] = 'gcc-4.2'
 env['CXX'] = 'g++-4.2'
 env['CXXFLAGS']=["-g", "-O3", "-Wall"]
-env['LIBS'] = ["boost_filesystem", "dl", "boost_regex",  "boost_serialization"]
+env['LIBS'] = ["boost_filesystem-mt", "dl", "boost_regex-mt",  "boost_serialization-mt"]
 
 
 pluginAdditionalObjects=[]
@@ -29,12 +29,12 @@ conf = Configure(env)
 if conf.CheckLib('gomp'):
     env['CXXFLAGS'] += ["-fopenmp"]
 
-if not conf.CheckLib('boost_regex'):
+if not conf.CheckLib('boost_regex-mt'):
     print("boost_regex missing")
     Exit(1)
 
-if conf.CheckLib('boost_system'):
-    env['LIBS'] += ['boost_system']
+if conf.CheckLib('boost_system-mt'):
+    env['LIBS'] += ['boost_system-mt']
 
 env = conf.Finish()
 

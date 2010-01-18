@@ -129,4 +129,4 @@ bool SceneLoaderSFFile::loadSceneFromFile ( Scene* scene, std::string filename )
 	return true;
 }
 
-TRAYRACER_PLUGIN_EXPORT ( "sceneloader", "sffile", SceneLoaderSFFile );
+//TRAYRACER_PLUGIN_EXPORT ( "sceneloader", "sffile", SceneLoaderSFFile );

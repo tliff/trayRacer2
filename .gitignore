@@ -1,7 +1,14 @@
-.sconsign
+.scon*
+*.bundle
 build/**/*
 build/*
 build
+old/**
+doc/**
 Debug/**/*
 config.log
 data/*.trkd
+data/*~
+*.tga
+src/plugin/**
+*.tag

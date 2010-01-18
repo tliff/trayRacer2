@@ -2,7 +2,7 @@
 #define __SCENELOADER_XML__
 
 #include <string>
-#include "../../../sceneloader.hpp"
+#include <sceneloader.hpp>
 
 class SceneLoaderXml : public SceneLoader {
   virtual bool loadSceneFromFile(Scene* scene, std::string filename);

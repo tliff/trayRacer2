@@ -10,7 +10,7 @@
 #include "imagereader.hpp"
 #include "rgbsurface.hpp"
 
-struct blockComparator
+struct BlockComparator
 {
   bool operator()(std::string a, std::string b) const
   {
@@ -95,7 +95,7 @@ public:
 		return true;
 	}
 
-	std::multimap<std::string, std::multimap<std::string,std::string>, blockComparator > properties;
+	std::multimap<std::string, std::multimap<std::string,std::string>, BlockComparator > properties;
 
 	std::multimap<std::string, std::multimap<std::string,std::string> >::iterator lastBlock;
 	
@@ -157,6 +157,7 @@ public:
 	}
 
 	Color getBackground(Vector3 n){
+		return Color(255,0,255);
 		Vector3 polar = n.getPolar();
 		float phi = polar.y;
 		float theta = polar.z;

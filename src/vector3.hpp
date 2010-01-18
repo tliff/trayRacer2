@@ -9,11 +9,9 @@
 #include <boost/serialization/serialization.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "outputable.hpp"
-
 typedef double vecType;
 
-class Vector3 : public Outputable
+class Vector3 
 {
 	public:
 		vecType x,y,z;
@@ -66,38 +64,38 @@ class Vector3 : public Outputable
 			return Vector3 ( x/b,y/b,z/b );
 		}
 
-
-		Vector3 operator+= ( const Vector3& other )
-		{
-			x+=other.x;
-			y+=other.y;
-			z+=other.z;
-			return *this;
-		}
-
-		Vector3 operator-= ( const Vector3& b )
-		{
-			x-=b.x;
-			y-=b.y;
-			z-=b.z;
-			return *this;
-		}
-
-		Vector3 operator*= ( const vecType& b )
-		{
-			x*=b;
-			y*=b;
-			z*=b;
-			return *this;
-		}
-
-		Vector3 operator/= ( const vecType& b )
-		{
-			x/=b;
-			y/=b;
-			z/=b;
-			return *this;
-		}
+		// 
+		// Vector3 operator+= ( const Vector3& other )
+		// {
+		// 	x+=other.x;
+		// 	y+=other.y;
+		// 	z+=other.z;
+		// 	return *this;
+		// }
+		// 
+		// Vector3 operator-= ( const Vector3& b )
+		// {
+		// 	x-=b.x;
+		// 	y-=b.y;
+		// 	z-=b.z;
+		// 	return *this;
+		// }
+		// 
+		// Vector3 operator*= ( const vecType& b )
+		// {
+		// 	x*=b;
+		// 	y*=b;
+		// 	z*=b;
+		// 	return *this;
+		// }
+		// 
+		// Vector3 operator/= ( const vecType& b )
+		// {
+		// 	x/=b;
+		// 	y/=b;
+		// 	z/=b;
+		// 	return *this;
+		// }
 		Vector3 cross ( const Vector3& b ) const
 		{
 			return Vector3 (	y * b.z - b.y * z,

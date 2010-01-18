@@ -5,7 +5,7 @@
 #include <string>
 #include "scene.hpp"
 
-class SceneLoader : public Plugin {
+class SceneLoader {
  public:
   virtual bool loadSceneFromFile(Scene* scene, std::string filename){return false;};
   SceneLoader(){};

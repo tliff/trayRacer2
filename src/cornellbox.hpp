@@ -29,7 +29,6 @@ void updateGeometry(Vector3& const a, Vector3& const b);
 public:
   CornellBox();
   
-  std::string str() const;
 
   virtual bool intersect(const Ray &ray,
 			 Intersection* intersection);

@@ -64,13 +64,6 @@ inline bool Triangle::intersect(const Ray &ray,
 return true;
 };
 
-inline std::string Triangle::str() const {
-    std::string msg;
-    msg += p0.str();
-    msg += p1.str();
-    msg += p2.str();
-    return msg;
-}
 
 	
 

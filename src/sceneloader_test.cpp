@@ -18,4 +18,4 @@ bool SceneLoaderTest::loadSceneFromFile(Scene* scene, std::string filename){
 	return true;
 }
 
-TRAYRACER_PLUGIN_EXPORT("sceneloader", "test", SceneLoaderTest);
+//TRAYRACER_PLUGIN_EXPORT("sceneloader", "test", SceneLoaderTest);

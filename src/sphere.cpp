@@ -47,13 +47,6 @@ inline bool Sphere::intersect ( const Ray &ray,
 	return true;
 };
 
-std::string Sphere::str() const
-{
-	std::stringstream ss;
-	ss << "Sphere(center="<<center.str() <<"radius="<<radius<<")";
-	return ss.str();
-}
-
 inline void Sphere::computeBoundingBox()
 {
 	boundingBox = BBox ( center-Vector3 ( radius, radius, radius ),

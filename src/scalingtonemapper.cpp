@@ -18,7 +18,7 @@ bool ScalingToneMapper::map(RenderSurface* renderSurface, RGBSurface* outputSurf
 		}
 	}
 	float scaleFactor = std::max(std::max(maxr, maxg), maxb);
-// 	std::cout << maxr << maxg << maxb << std::endl;
+ 	std::cout << maxr << maxg << maxb << std::endl;
 	scaleFactor = scaleFactor != 0 ? scaleFactor : 1;
 	scaleFactor = 255.0f/scaleFactor;
 // 	std::cout << "Scale factor is " << scaleFactor << std::endl;

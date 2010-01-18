@@ -4,11 +4,12 @@
 #include "rgbsurface.hpp"
 #include <string>
 
-class ImageWriter : public Plugin {
+class ImageWriter {
 public:
   ImageWriter(){}
   ~ImageWriter(){}
   virtual bool write(std::ostream &stream, RGBSurface* surface)=0;
+  virtual std::string encode(RGBSurface* surface)=0;
 };
 
 #endif

@@ -30,4 +30,4 @@ RenderObserverConsole::~RenderObserverConsole()
 
 
 
-TRAYRACER_PLUGIN_EXPORT("renderobserver", "console", RenderObserverConsole);
+//TRAYRACER_PLUGIN_EXPORT("renderobserver", "console", RenderObserverConsole);

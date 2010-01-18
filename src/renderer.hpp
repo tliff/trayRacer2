@@ -7,7 +7,7 @@
 #include "rendersurface.hpp"
 #include <vector>
 
-class Renderer : public Plugin{
+class Renderer {
 protected:
 	std::vector<RenderObserver*> observers;
 	

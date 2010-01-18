@@ -3,7 +3,7 @@
 
 #define BUCKETWIDTH 16
 #define BUCKETHEIGHT 16
-#define SAMPLES 1024
+#define SAMPLES 1
 
 void RendererDefault::render ( Scene* scene, Camera* camera, RenderSurface* surface )
 {
@@ -58,9 +58,6 @@ inline Color RendererDefault::samplePixel(float x, float y){
 }
 
 inline Color RendererDefault::sampleDirection(const Ray& r, int depth){
-	//std::cout << "." << std::flush;
-	//std::cout << std::endl << std::endl;
-	//std::cout << std::endl << "|" << std::flush;
 	if(depth > 50)
 		return Color(0,0,10);
 	Intersection tmp;
@@ -69,12 +66,9 @@ inline Color RendererDefault::sampleDirection(const Ray& r, int depth){
 	Ray newRay = r;
 	float cost = 1;
 	int iterations =0;
-	//std::cout <<"-----------"<< std::endl;
 	while(true){
 		raysDone += 1;
 		i->distance = INFINITY;
-		//std::cout << "." << std::flush
-		//std::cout << newRay << std::endl;
 		
 		if(iterations == 100){
 			std::cout << "CHECKMECHECKMECHECKME" << std::endl;
@@ -83,20 +77,18 @@ inline Color RendererDefault::sampleDirection(const Ray& r, int depth){
 		}
 		if(iterations++ > 50)
 			return Color(0,0,0);
-		//std::cout << newRay << std::endl;
 		scene->getIntersection (newRay, i );
 		if ( i->distance != INFINITY && i->shape != NULL )
 		{
-			//std::cout << "hit" << std::endl;
+			return Color(255,255,0);
 			cost *= newRay.direction.dot(i->normal*-1);	
 		}
 		else{
 			return scene->getBackground(newRay.direction)*cost;
 		}	
-		//std::cout << i->point << "+" << (i->normal*0.01) << std::endl;
 		newRay = Ray(i->point+(i->normal*0.0001), Sampler::randomHemisphere(i->normal));
 	}
 }
 
 
-TRAYRACER_PLUGIN_EXPORT ( "renderer", "default", RendererDefault );
+//TRAYRACER_PLUGIN_EXPORT ( "renderer", "default", RendererDefault );

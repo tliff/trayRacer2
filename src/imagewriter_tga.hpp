@@ -10,6 +10,7 @@
 class ImageWriterTGA : public ImageWriter {
 public:
   bool write(std::ostream &stream, RGBSurface* surface);
+  std::string encode(RGBSurface* surface);
 };
 
 

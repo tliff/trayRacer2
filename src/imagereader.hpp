@@ -4,7 +4,7 @@
 #include "rgbsurface.hpp"
 #include <string>
 
-class ImageReader : public Plugin {
+class ImageReader {
 public:
   ImageReader(){}
   ~ImageReader(){}

@@ -5,7 +5,7 @@
 #include "plugin.hpp"
 #include "rendersurface.hpp"
 
-class RenderObserver : public Plugin{
+class RenderObserver {
 protected:
 	boost::timer timer;
 	RenderSurface* surface;

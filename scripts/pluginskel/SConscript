@@ -1,4 +1,0 @@
-Import('env')
-env.SharedLibrary(	'tr%type%_%id%',
-	      	['%type%_%id%.cpp'],
-		)

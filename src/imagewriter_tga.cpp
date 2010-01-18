@@ -38,5 +38,42 @@ bool ImageWriterTGA::write(std::ostream &stream, RGBSurface* surface){
 	}
 	return true;
 }
+std::string ImageWriterTGA::encode(RGBSurface* surface){
+	std::stringstream stream;
+	int width = surface->getWidth();
+	int height = surface->getHeight();
+	stream << ((char)0x00); //no id
+	stream << ((char)0x00); //no palette
+	stream << ((char)0x02); //uncompressed truecolor
+	stream << ((char)0x00); //no palette
 
-TRAYRACER_PLUGIN_EXPORT("imagewriter", "tga", ImageWriterTGA);
+	stream << ((char)0x00); //no palette
+	stream << ((char)0x00); //no palette
+	stream << ((char)0x00); //no palette
+	stream << ((char)0x00); //no palette
+	stream << ((char)0x00); //origin x
+	stream << ((char)0x00); //origin x
+	stream << ((char)0x00); //origin y
+	stream << ((char)0x00); //origin y
+	stream << ((char) (width%256)); // width
+	stream << ((char) (width/256)); // width
+	stream << ((char) (height%256)); // height
+	stream << ((char) (height/256)); // height
+
+	stream << ((char)0x20); //32bit color
+	stream << ((char)0x00); //8bit alpha-channel
+	
+	
+	for(int y=height-1; y >= 0; y--){
+		for(int x = 0; x < width; x++)
+		{
+			Color pixel = surface->getPixel(x,y);
+			stream << ((char)pixel.b);
+			stream << ((char)pixel.g);
+			stream << ((char)pixel.r);
+			stream << ((char)255);
+		}
+	}
+	return stream.str();
+}
+//TRAYRACER_PLUGIN_EXPORT("imagewriter", "tga", ImageWriterTGA);

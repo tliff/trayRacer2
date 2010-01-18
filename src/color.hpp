@@ -1,17 +1,16 @@
 #ifndef __COLOR_HPP__
 #define __COLOR_HPP__
 
-#include "outputable.hpp"
 #include <math.h>
 #include <sstream>
 
 
-class Color : public Outputable {
+class Color  {
 public:
 	float r, g, b, a;
 
 	//operators
-	Color(): r(0), g(0), b(0), a(1){};
+	Color(): r(0), g(255), b(0), a(1){};
 	Color(float _r, float _g, float _b) : r(_r), g(_g), b(_b)
 	{
 		
@@ -27,12 +26,6 @@ public:
 
 	inline Color operator*(const Color& c) const {
 		return Color(r*(c.r),g*(c.g),b*(c.b));
-	}
-	
-	std::string str() const {
-		std::stringstream ss;
-		ss << "Color(" << r << "," <<g<< ","<<b << ");";
-		return ss.str();
 	}
 	
 	inline Color gamma(const double gamma) const{

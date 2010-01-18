@@ -6,13 +6,6 @@ Plane::Plane ( Vector3 _base, Vector3 _normal ) : base ( _base ),
 	normal.normalize();
 }
 
-std::string Plane::str() const
-{
-	std::stringstream ss;
-	ss << "Plane(base="<<base.str() <<"normal="<<normal.str()<<")";
-	return ss.str();
-}
-
 inline bool Plane::intersect ( const Ray &ray,
                                 Intersection* intersection )
 {

@@ -6,4 +6,4 @@ Ray CameraPinhole::constructViewRay(double x, double y){
 	return Ray(origin, d);
 }
 
-TRAYRACER_PLUGIN_EXPORT("camera", "pinhole", CameraPinhole);
+//TRAYRACER_PLUGIN_EXPORT("camera", "pinhole", CameraPinhole);

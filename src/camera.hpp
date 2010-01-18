@@ -11,7 +11,7 @@
  * A camera takes care to map coordinates from
  * a render buffer to a ray we need to cast.
  */
-class Camera : public Plugin {
+class Camera {
 public:
 
   /**

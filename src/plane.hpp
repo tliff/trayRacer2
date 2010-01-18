@@ -12,7 +12,6 @@ class Plane : public Shape
 		Vector3 base;
 		Vector3 normal;
 		Plane ( Vector3 _base, Vector3 _normal );
-		std::string str() const;
 
 		virtual bool intersect ( const Ray &ray,
 		                         Intersection* intersection );

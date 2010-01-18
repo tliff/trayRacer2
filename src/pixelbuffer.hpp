@@ -1,8 +1,8 @@
 #ifndef _PIXELBUFFER_HPP_
 #define _PIXELBUFFER_HPP_
 #include <vector>
-template <typename T>
-class PixelBuffer
+
+template <typename T> class PixelBuffer
 {
 public:
 	PixelBuffer():

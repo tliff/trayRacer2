@@ -6,13 +6,12 @@
 #include "bbox.hpp"
 
 #include "intersection.hpp"
-#include "outputable.hpp"
 #include <map>
 #include <string>
 
 class Shader;
 class Intersection;
-class Shape : public Outputable{
+class Shape {
 protected:
   BBox boundingBox;
   bool boundingBoxComputed;
@@ -55,7 +54,6 @@ public:
 
 		}
 	
-	virtual std::string str ()const=0;
 
 };
 

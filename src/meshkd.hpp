@@ -48,7 +48,6 @@ public:
     normal = (p2-p1).cross(p0-p1);
     normal.normalize();
   };
-  std::string str() const;
 inline bool intersect(const Ray &ray,
 				Intersection* intersection){
   Vector3 tvec, pvec, qvec;
@@ -266,7 +265,6 @@ class MeshKD : public Shape
 			ia >> tree;
 		//	dump();
 			ifs.close();
-			std::cout << getBBox() << std::endl;
 			return true;
 		}
 
@@ -275,8 +273,6 @@ class MeshKD : public Shape
 		virtual bool doesIntersect ( const Ray &ray );
 
 		virtual void computeBoundingBox() {};
-
-		virtual std::string str() const;
 
 
 		void setUp(std::multimap<std::string,std::string> m){
@@ -310,6 +306,6 @@ class MeshKD : public Shape
 };
 
 //BOOST_CLASS_TRACKING ( MeshKD , 0 )
-BOOST_CLASS_TRACKING ( MeshKDNode , 0 )
+//BOOST_CLASS_TRACKING ( MeshKDNode , 0 )
 
 #endif

@@ -1,7 +1,6 @@
 #ifndef __BBOX__
 #define __BBOX__
 #include "math/math.hpp"
-#include "outputable.hpp"
 #include <sstream>
 #include <boost/serialization/serialization.hpp>
 
@@ -10,17 +9,11 @@
  * \brief An axis-alligned bounding Box
  */
 
-class BBox : public Outputable
+class BBox 
 {
 
 	public:
 
-		std::string str() const
-		{
-			std::stringstream ss;
-			ss << "BBox("<<lowerBound << upperBound<<")";
-			return ss.str();
-		}
 		/**
 		 * \brief Determines wheter a ray intersects this box
 		 * \returns true on hit, false on miss

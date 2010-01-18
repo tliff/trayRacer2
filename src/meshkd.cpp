@@ -461,8 +461,4 @@ MeshKD::~MeshKD()
 	}
 }
 
-std::string MeshKD::str() const
-{
-	return std::string ( "Mesh" );
-}
 

@@ -10,7 +10,7 @@ public:
 	{
 		
 	};
-	 ~Light ();
+	 ~Light (){};
 
 	Vector3 getPosition() const 
 	{

@@ -1,9 +1,7 @@
 #ifndef __MATH_MATRIX44_HPP
 #define __MATH_MATRIX44_HPP
 
-#include "../outputable.hpp"
-
-class Matrix44 : public Outputable
+class Matrix44 
  {
 public:
     double m[16];	
@@ -148,21 +146,11 @@ public:
     }
     
     void invert(){
-	double d = this->det();
-	*this = adjoint();
-	this->operator *(1/d);
+		double d = this->det();
+		*this = adjoint();
+		this->operator *(1/d);
     }
     
-    std::string str() const{
-	std::stringstream ss;
-	for(int i = 0; i < 4; i++){
-	    ss << (float)m[4*i+0] << "   " << 
-		(float)m[4*i+1] << "   " << 
-		(float)m[4*i+2] << "   " << 
-		(float)m[4*i+3] << std::endl;
-	}
-	return ss.str();
-    }
     
 		static Matrix44 translation(const double x, const double y, const double z){
 			return Matrix44(

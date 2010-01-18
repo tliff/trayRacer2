@@ -11,7 +11,6 @@ public:
   Sphere(Vector3 _center, double _radius) : center(_center),
 					   radius(_radius){};
 				Sphere(){};
-	std::string str() const;
 
 	void setUp(std::multimap<std::string,std::string> m){
 		std::multimap<std::string,std::string>::iterator result;

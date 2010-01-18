@@ -19,7 +19,6 @@ Triangle(){};
     normal = (p0-p1).cross(p2-p1);
     normal.normalize();
   };
-  virtual std::string str() const;
 
   virtual bool intersect(const Ray &ray,
 			 Intersection* intersection);
